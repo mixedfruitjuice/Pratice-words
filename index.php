@@ -43,6 +43,7 @@
             <h3 id="geraden"></h3>
         </div>
     </div>
+    <h3 id="score" class="center"><h3>
     <script type="text/javascript" src="js/script.js"></script>
     </body>
 </html>

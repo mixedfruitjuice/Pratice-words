@@ -5,7 +5,6 @@ $(document).ready(function(){
 
     function woordcheck(woord) {
         var waarde = $("input").val();
-        var uitslag;
         if(waarde === woord) {
             $("#geraden").html("goed geraden");
             $("#geraden").css('color', 'green');
@@ -18,23 +17,29 @@ $(document).ready(function(){
 
     $("#start").click(function() {
         var x = 0;
+        score = 0;
+        $("input").val("");
         $('#start').html("Opniew starten");
         $("#geraden").html("");
         $("#woord").html(woordenNL[x]);
         $("input").keyup(function (e) {
             if (e.keyCode == 13) {
-                if (x <= 4) {
+                var woordlengte = woordenEN.length;
+
+                if (x < woordlengte) {
                     woordcheck(woordenEN[x]);
                     x++;
                     $("#woord").html(woordenNL[x]);
                     $("input").val("");
-                } else if (x >= 4){
-                    $("#geraden").html("score: " + score + "klik op de knop om opnieuw te beginnen");
+                }
+
+                if (x >= woordlengte) {
+                    var endresult = score / woordenEN.length * 100;
+                    $("#woord").html("");
+                    $("#geraden").html(endresult + "% gescoord klik op de knop om opniew te spelen");
                     $("#geraden").css('color', 'blue');
                 }
             }
         });
     });
-
-
 });
